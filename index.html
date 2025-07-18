@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahim | Portfolio</title>
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  
+  <!-- Main CSS file -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Enhanced Custom Styles */
+    :root {
+      --white-1: hsl(0, 0%, 100%);
+      --white-2: hsl(0, 0%, 98%);
+      --light-gray: hsl(0, 0%, 84%);
+      --light-gray-70: hsla(0, 0%, 84%, 0.7);
+      --orange-yellow-crayola: hsl(45, 100%, 72%);
+      --jet: hsl(0, 0%, 22%);
+      --eerie-black-1: hsl(240, 2%, 13%);
+      --bg-gradient-jet: linear-gradient(to bottom right, hsla(240, 1%, 18%, 0.251) 0%, hsla(240, 2%, 11%, 0) 100%), hsl(240, 2%, 13%);
+      --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
+      --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
+      --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 70px; /* Prevent navbar covering content */
+    }
+    
+    /* Navbar Enhancements */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--eerie-black-1);
+      border-bottom: 1px solid var(--jet);
+      box-shadow: var(--shadow-2);
+      z-index: 100;
+      padding: 10px 0;
+    }
+    
+    .navbar-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+      margin: 0;
+      gap: 5px;
+    }
+    
+    .navbar-link {
+      color: var(--light-gray);
+      font-size: 12px;
+      padding: 12px 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      border-radius: 8px;
+    }
+    
+    .navbar-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-link:hover {
+      color: var(--orange-yellow-crayola);
+      transform: translateY(-3px);
+    }
+    
+    .navbar-link:hover::after {
+      width: 100%;
+      left: 0;
+    }
+    
+    .navbar-link.active {
+      color: var(--orange-yellow-crayola);
+      transform: translateY(-3px);
+    }
+    
+    .navbar-link.active::after {
+      width: 100%;
+      left: 0;
+    }
+    
+    .nav-icon {
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+    
+    /* Main Content Padding */
+    .main-content {
+      padding-top: 70px; /* Space for fixed navbar */
+    }
+    
+    /* Profile Image Section */
+    .profile-image-section {
+      margin: 20px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-1);
+      border: 1px solid var(--jet);
+    }
+    
+    .profile-image-section img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .profile-image-section:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Section Titles */
+    .section-title {
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+      color: var(--white-2);
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+      border-radius: 3px;
+    }
+    
+    /* Service/Project/Testimonial Items */
+    .service-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    @media (min-width: 580px) {
+      .service-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    .service-item, 
+    .project-item,
+    .testimonial-item {
+      position: relative;
+      background: var(--border-gradient-onyx);
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: var(--shadow-2);
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+    
+    .service-item::before,
+    .project-item::before,
+    .testimonial-item::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      background: var(--bg-gradient-jet);
+      border-radius: inherit;
+      z-index: -1;
+    }
+    
+    .service-item:hover,
+    .project-item:hover,
+    .testimonial-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .service-icon-box,
+    .project-icon-box,
+    .testimonial-icon-box {
+      width: 60px;
+      height: 60px;
+      background: var(--border-gradient-onyx);
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: var(--orange-yellow-crayola);
+      box-shadow: var(--shadow-1);
+    }
+    
+    .service-icon-box::before,
+    .project-icon-box::before,
+    .testimonial-icon-box::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      background: var(--eerie-black-1);
+      border-radius: inherit;
+      z-index: -1;
+    }
+    
+    .service-content-box,
+    .project-content-box,
+    .testimonial-content-box {
+      color: var(--white-2);
+    }
+    
+    .service-item-title,
+    .project-item-title,
+    .testimonial-item-title {
+      color: var(--white-2);
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    
+    .service-item-text,
+    .project-item-text,
+    .testimonial-item-text {
+      color: var(--white-2);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .project-features {
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+    
+    .project-features li {
+      color: var(--white-2);
+      font-size: 13px;
+      margin-bottom: 5px;
+      position: relative;
+    }
+    
+    .project-features li::before {
+      content: "•";
+      color: var(--orange-yellow-crayola);
+      position: absolute;
+      left: -15px;
+    }
+    
+    /* Testimonial Specific Styles */
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 15px;
+    }
+    
+    .testimonial-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .testimonial-meta {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .testimonial-name {
+      color: var(--white-2);
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    
+    .testimonial-date {
+      color: var(--light-gray-70);
+      font-size: 12px;
+    }
+    
+    .testimonial-position {
+      color: var(--light-gray-70);
+      font-size: 13px;
+      font-style: italic;
+      margin-top: 15px;
+    }
+    
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+      z-index: 1000;
+      transition: width 0.1s;
+    }
+    
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--bg-gradient-onyx);
+      color: var(--orange-yellow-crayola);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* Animation Classes */
+    .animate-delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .animate-delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .animate-delay-3 {
+      animation-delay: 0.6s;
+    }
+    
+    .animate-delay-4 {
+      animation-delay: 0.8s;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator"></div>
+  
+  <!-- Back to Top Button -->
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+  
+  <!-- Main Container -->
+  <main class="animate__animated animate__fadeIn">
+    <!-- Sidebar -->
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+        <figure class="avatar-box" style="cursor: pointer;" onclick="this.classList.toggle('animate__swing')">
+          <img src="./assets/images/my-avatar.png" alt="Mahim" width="80" class="animate__animated animate__fadeInLeft">
+        </figure>
+
+        <div class="info-content animate__animated animate__fadeIn">
+          <h1 class="name" title="Mohiuddin Mahim">Mohiuddin Mahim</h1>
+          <p class="title">Student & Developer</p>
+        </div>
+
+        <button class="info_more-btn animate__animated animate__fadeInUp" data-sidebar-btn onclick="this.classList.add('animate__pulse')">
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+      </div>
+
+      <div class="sidebar-info_more animate__animated animate__fadeIn">
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+          <li class="contact-item animate__animated animate__fadeInLeft">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:mohiuddinmahim424@gmail.com" class="contact-link">mohiuddinmahim424@gmail.com</a>
+            </div>
+          </li>
+
+          <li class="contact-item animate__animated animate__fadeInLeft animate__delay-1s">
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a href="tel:+8801533301753" class="contact-link">+8801533301753</a>
+            </div>
+          </li>
+
+          <li class="contact-item animate__animated animate__fadeInLeft animate__delay-2s">
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+              <time datetime="2002-01-05">January 05, 2002</time>
+            </div>
+          </li>
+
+          <li class="contact-item animate__animated animate__fadeInLeft animate__delay-3s">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <address>Mirpur, Dhaka, BD</address>
+            </div>
+          </li>
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+          <li class="social-item animate__animated animate__fadeInUp animate__delay-1s">
+            <a href="https://www.facebook.com/share/15qVqz2Hcq/" class="social-link" target="_blank">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item animate__animated animate__fadeInUp animate__delay-2s">
+            <a href="https://www.instagram.com/mahimmohiuddin?igsh=MTJjaGNydmh3Z3dkdw==" class="social-link" target="_blank">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item animate__animated animate__fadeInUp animate__delay-3s">
+            <a href="https://www.linkedin.com/in/mohiuddin-mahim-359ab828b" class="social-link" target="_blank">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item animate__animated animate__fadeInUp animate__delay-4s">
+            <a href="https://github.com/m-mahim" class="social-link" target="_blank">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <button class="navbar-link active" data-nav-link onclick="showSection('about')">
+              <ion-icon name="person-outline" class="nav-icon"></ion-icon>
+              <span>About</span>
+            </button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link onclick="showSection('education')">
+              <ion-icon name="school-outline" class="nav-icon"></ion-icon>
+              <span>Education</span>
+            </button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link onclick="showSection('interests')">
+              <ion-icon name="heart-outline" class="nav-icon"></ion-icon>
+              <span>Interests</span>
+            </button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link onclick="showSection('projects')">
+              <ion-icon name="code-slash-outline" class="nav-icon"></ion-icon>
+              <span>Projects</span>
+            </button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link onclick="showSection('services')">
+              <ion-icon name="construct-outline" class="nav-icon"></ion-icon>
+              <span>What I Do</span>
+            </button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link onclick="showSection('skills')">
+              <ion-icon name="stats-chart-outline" class="nav-icon"></ion-icon>
+              <span>Skills</span>
+            </button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link onclick="showSection('experience')">
+              <ion-icon name="briefcase-outline" class="nav-icon"></ion-icon>
+              <span>Experience</span>
+            </button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link onclick="showSection('testimonials')">
+              <ion-icon name="chatbubbles-outline" class="nav-icon"></ion-icon>
+              <span>Testimonials</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- About Section -->
+      <article class="about active" data-page="about" id="about-section">
+        <header>
+          <h2 class="h2 article-title section-title">About me</h2>
+        </header>
+
+        <section class="about-text animate__animated animate__fadeIn animate__delay-1s">
+          <p>
+            I am a BSc student at Daffodil International University, currently learning web development and programming. 
+            Though I don't enjoy it, I push myself to solve problems to sharpen my mind. My true passion is photography—it's 
+            my favorite pastime and creative outlet. I've done many projects, but few are published as I dislike publicity.
+          </p>
+          <p>
+            For now, I'm fully dedicated to academics. Since I don't need to earn for my family, I can focus entirely on 
+            studies and skill-building. Programming feels obligatory, but photography fuels me. I embrace this balance, 
+            nurturing both duty and passion.
+          </p>
+        </section>
+
+        <!-- Profile Image Section -->
+        <div class="profile-image-section animate__animated animate__fadeIn animate__delay-2s">
+          <img src="./assets/images/1.jpg" alt="Mahim Profile">
+        </div>
+      </article>
+
+      <!-- Education Section -->
+      <article class="resume" data-page="education" id="education-section" style="display: none;">
+        <header>
+          <h2 class="h2 article-title section-title">Education</h2>
+        </header>
+
+        <section class="timeline">
+          <ol class="timeline-list">
+            <li class="timeline-item animate__animated animate__fadeInLeft">
+              <h4 class="h4 timeline-item-title">BSc. in Computer Science</h4>
+              <div class="timeline-info">
+                <span>Daffodil International University</span>
+                <span>2023 — Present</span>
+              </div>
+              <p class="timeline-text">
+                Pursuing Bachelor's degree in Computer Science with focus on software development and algorithms.
+              </p>
+            </li>
+
+            <li class="timeline-item animate__animated animate__fadeInLeft animate__delay-1s">
+              <h4 class="h4 timeline-item-title">Higher Secondary Certificate</h4>
+              <div class="timeline-info">
+                <span>Dhaka Commerce College</span>
+                <span>2019 — 2021</span>
+              </div>
+              <p class="timeline-text">
+                Completed HSC in Science with perfect GPA of 5.00, focusing on Physics, Chemistry and Mathematics.
+              </p>
+            </li>
+
+            <li class="timeline-item animate__animated animate__fadeInLeft animate__delay-2s">
+              <h4 class="h4 timeline-item-title">Secondary School Certificate</h4>
+              <div class="timeline-info">
+                <span>Adamjee Cantonment Public School</span>
+                <span>2009 — 2019</span>
+              </div>
+              <p class="timeline-text">
+                Completed 10 years of schooling with GPA 4.72, developing strong foundation in all subjects.
+              </p>
+            </li>
+          </ol>
+        </section>
+      </article>
+
+      <!-- Interests Section -->
+      <article class="interests" data-page="interests" id="interests-section" style="display: none;">
+        <header>
+          <h2 class="h2 article-title section-title">Interests</h2>
+        </header>
+
+        <section class="service">
+          <ul class="service-list">
+            <li class="service-item animate__animated animate__fadeInUp">
+              <div class="service-icon-box">
+                <i class="fas fa-running"></i>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Staying Active</h4>
+                <p class="service-item-text">
+                  Passionate about outdoor sports and hitting the gym to maintain both physical and mental well-being.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-1">
+              <div class="service-icon-box">
+                <i class="fas fa-book"></i>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Reading & Learning</h4>
+                <p class="service-item-text">
+                  Enjoy exploring new ideas and perspectives through books across various genres.
+                </p>
+              </div>
+            </li>
+            
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-2">
+              <div class="service-icon-box">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Socializing & Networking</h4>
+                <p class="service-item-text">
+                  Love engaging in meaningful conversations and connecting with people from different walks of life.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-3">
+              <div class="service-icon-box">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Pushing Boundaries</h4>
+                <p class="service-item-text">
+                  Constantly challenging myself to step out of my comfort zone to grow personally and professionally.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-4">
+              <div class="service-icon-box">
+                <i class="fas fa-paint-brush"></i>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Creative Expression</h4>
+                <p class="service-item-text">
+                  Enjoy experimenting with photography, video editing, and design to tell compelling visual stories.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-4">
+              <div class="service-icon-box">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Tech Exploration</h4>
+                <p class="service-item-text">
+                  Fascinated by emerging technologies and always eager to try out new tools, frameworks, and innovations.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </article>
+
+      <!-- Projects Section -->
+      <article class="projects" data-page="projects" id="projects-section" style="display: none;">
+        <header>
+          <h2 class="h2 article-title section-title">Projects</h2>
+        </header>
+
+        <section class="service">
+          <ul class="service-list">
+            <li class="service-item animate__animated animate__fadeInUp">
+              <div class="project-icon-box">
+                <i class="fas fa-users-cog"></i>
+              </div>
+              <div class="project-content-box">
+                <h4 class="h4 project-item-title">Employee Management System</h4>
+                <p class="project-item-text">
+                  A system to streamline employee data, attendance, and payroll management.
+                </p>
+                <ul class="project-features">
+                  <li>User authentication</li>
+                  <li>CRUD operations</li>
+                  <li>Attendance tracking</li>
+                  <li>Automated salary calculation</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-1">
+              <div class="project-icon-box">
+                <i class="fas fa-address-book"></i>
+              </div>
+              <div class="project-content-box">
+                <h4 class="h4 project-item-title">Phone Book App</h4>
+                <p class="project-item-text">
+                  A digital contact manager to store and organize phone numbers efficiently.
+                </p>
+                <ul class="project-features">
+                  <li>Add, edit, delete contacts</li>
+                  <li>Search functionality</li>
+                  <li>Data persistence (local storage/DB)</li>
+                </ul>
+              </div>
+            </li>
+            
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-2">
+              <div class="project-icon-box">
+                <i class="fas fa-ticket-alt"></i>
+              </div>
+              <div class="project-content-box">
+                <h4 class="h4 project-item-title">Ticket Management System</h4>
+                <p class="project-item-text">
+                  A platform to track and resolve customer or IT support tickets.
+                </p>
+                <ul class="project-features">
+                  <li>Ticket submission</li>
+                  <li>Priority tagging</li>
+                  <li>Status updates</li>
+                  <li>Admin dashboard</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-3">
+              <div class="project-icon-box">
+                <i class="fas fa-exchange-alt"></i>
+              </div>
+              <div class="project-content-box">
+                <h4 class="h4 project-item-title">Binary to Decimal Converter</h4>
+                <p class="project-item-text">
+                  A simple yet efficient tool for converting binary numbers to decimal.
+                </p>
+                <ul class="project-features">
+                  <li>Real-time conversion</li>
+                  <li>Input validation</li>
+                  <li>Responsive UI</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-4">
+              <div class="project-icon-box">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div class="project-content-box">
+                <h4 class="h4 project-item-title">DC to AC Converter (Simulation/Design)</h4>
+                <p class="project-item-text">
+                  A conceptual or practical model demonstrating power conversion principles.
+                </p>
+                <ul class="project-features">
+                  <li>Circuit simulation (if software-based)</li>
+                  <li>Efficiency calculations</li>
+                  <li>Waveform visualization</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </article>
+
+      <!-- Services Section -->
+      <article class="services" data-page="services" id="services-section" style="display: none;">
+        <header>
+          <h2 class="h2 article-title section-title">What I'm Doing</h2>
+        </header>
+
+        <section class="service">
+          <ul class="service-list">
+            <li class="service-item animate__animated animate__fadeInUp">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Learning Web development</h4>
+                <p class="service-item-text">
+                  Building responsive, modern websites with HTML, CSS, JavaScript and frameworks.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-1">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Photography</h4>
+                <p class="service-item-text">
+                  Capturing moments with professional equipment and editing with Adobe Lightroom & Photoshop.
+                </p>
+              </div>
+            </li>
+            
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-2">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg" alt="design icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Programming and Problem Solving</h4>
+                <p class="service-item-text">
+                  Solving algorithmic challenges on platforms like LeetCode and participating in coding competitions.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-3">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Physical Activities</h4>
+                <p class="service-item-text">
+                  Maintaining fitness through gym, cycling, and outdoor sports for mental and physical well-being.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </article>
+
+      <!-- Skills Section -->
+      <article class="skills" data-page="skills" id="skills-section" style="display: none;">
+        <header>
+          <h2 class="h2 article-title section-title">My Skills</h2>
+        </header>
+
+        <section class="skill animate__animated animate__fadeIn">
+          <ul class="skills-list content-card">
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Web Development</h5>
+                <data value="50">50%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 50%; background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Problem Solving</h5>
+                <data value="20">20%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 20%; background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Video Editing</h5>
+                <data value="60">60%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 60%; background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Data Science</h5>
+                <data value="10">10%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 10%; background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 100%);"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Event Management</h5>
+                <data value="40">40%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 40%; background: linear-gradient(90deg, #a18cd1 0%, #fbc2eb 100%);"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Graphic Design</h5>
+                <data value="35">35%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 35%; background: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);"></div>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </article>
+
+      <!-- Experience Section -->
+      <article class="experience" data-page="experience" id="experience-section" style="display: none;">
+        <header>
+          <h2 class="h2 article-title section-title">Experience</h2>
+        </header>
+
+        <section class="timeline">
+          <ol class="timeline-list">
+            <li class="timeline-item animate__animated animate__fadeInLeft">
+              <h4 class="h4 timeline-item-title">Programming Journey</h4>
+              <div class="timeline-info">
+                <span>Self-taught Developer</span>
+                <span>2023 — Present</span>
+              </div>
+              <p class="timeline-text">
+                Developed multiple personal projects including responsive websites and small web applications.
+              </p>
+            </li>
+
+            <li class="timeline-item animate__animated animate__fadeInLeft animate__delay-1s">
+              <h4 class="h4 timeline-item-title">Photography & Video Editing</h4>
+              <div class="timeline-info">
+                <span>Freelance Creative</span>
+                <span>2013 — Present</span>
+              </div>
+              <p class="timeline-text">
+                Created numerous photo projects and edited videos for personal and small business clients.
+              </p>
+            </li>
+
+            <li class="timeline-item animate__animated animate__fadeInLeft animate__delay-2s">
+              <h4 class="h4 timeline-item-title">Event Management</h4>
+              <div class="timeline-info">
+                <span>Freelance Organizer</span>
+                <span>2015 — Present</span>
+              </div>
+              <p class="timeline-text">
+                Planned and executed various events including weddings, corporate functions, and community gatherings. Coordinated logistics, managed vendor relations, and ensured smooth event flow from start to finish.
+              </p>
+            </li>
+          </ol>
+        </section>
+      </article>
+
+      <!-- Testimonials Section -->
+      <article class="testimonials" data-page="testimonials" id="testimonials-section" style="display: none;">
+        <header>
+          <h2 class="h2 article-title section-title">Testimonials</h2>
+        </header>
+
+        <section class="service">
+          <ul class="service-list">
+            <li class="service-item animate__animated animate__fadeInUp">
+              <div class="testimonial-icon-box">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <div class="testimonial-content-box">
+                <div class="testimonial-header">
+                  <div class="testimonial-avatar">
+                    <img src="./assets/images/avatar-2.png" alt="Raiyana Rezwana">
+                  </div>
+                  <div class="testimonial-meta">
+                    <h4 class="h4 testimonial-name">Raiyana Rezwana</h4>
+                    <span class="testimonial-date">14 June, 2021</span>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "Working with Mahim was an absolute pleasure. He delivered high-quality work ahead of schedule and brought fresh, creative ideas to the table. His ability to understand complex requirements and turn them into clean, functional solutions is truly impressive. I highly recommend him to anyone looking for a reliable and skilled developer."
+                </p>
+                <p class="testimonial-position">— Maimana Rezwana, Project Manager, TechNova Solutions</p>
+              </div>
+            </li>
+
+            <li class="service-item animate__animated animate__fadeInUp animate-delay-1">
+              <div class="testimonial-icon-box">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <div class="testimonial-content-box">
+                <div class="testimonial-header">
+                  <div class="testimonial-avatar">
+                    <img src="./assets/images/avatar-2.png" alt="Maimana Rezwana">
+                  </div>
+                  <div class="testimonial-meta">
+                    <h4 class="h4 testimonial-name">Maimana Rezwana</h4>
+                    <span class="testimonial-date">14 June, 2021</span>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "I was amazed by Mahim's dedication and work ethic. From the first meeting, he listened carefully to our goals and delivered a final product that exceeded expectations. His ability to stay calm under pressure and solve problems quickly made a huge difference in our project's success."
+                </p>
+                <p class="testimonial-position">— Raiyana Rezwana, CEO, GreenTech Vision</p>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <!-- Ionicon scripts -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  
+  <!-- Custom JavaScript -->
+  <script>
+    // Enhanced JavaScript for interactive functionality
+    
+    // Function to show/hide sections with smooth transitions
+    function showSection(sectionId) {
+      // Hide all sections first with fade out effect
+      document.querySelectorAll('[data-page]').forEach(section => {
+        if (section.style.display !== 'none') {
+          section.classList.add('animate__fadeOut');
+          setTimeout(() => {
+            section.style.display = 'none';
+            section.classList.remove('animate__fadeOut');
+          }, 300);
+        }
+      });
+      
+      // Show the selected section with fade in effect
+      const targetSection = document.getElementById(sectionId + '-section');
+      targetSection.style.display = 'block';
+      targetSection.classList.add('animate__fadeIn');
+      setTimeout(() => {
+        targetSection.classList.remove('animate__fadeIn');
+      }, 300);
+      
+      // Update active state in navbar with animation
+      document.querySelectorAll('.navbar-link').forEach(link => {
+        if (link.classList.contains('active')) {
+          link.classList.remove('active');
+          link.classList.add('animate__fadeOut');
+          setTimeout(() => {
+            link.classList.remove('animate__fadeOut');
+          }, 300);
+        }
+      });
+      
+      event.target.classList.add('animate__pulse');
+      setTimeout(() => {
+        event.target.classList.remove('animate__pulse');
+      }, 1000);
+      event.target.classList.add('active');
+      
+      // Smooth scroll to top of the section
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      
+      // Update URL hash
+      history.pushState(null, null, '#' + sectionId);
+    }
+    
+    // Make sidebar contacts toggleable with animation
+    document.querySelector('[data-sidebar-btn]').addEventListener('click', function() {
+      const sidebarMore = document.querySelector('.sidebar-info_more');
+      const isHidden = sidebarMore.style.display === 'none' || !sidebarMore.style.display;
+      
+      if (isHidden) {
+        sidebarMore.style.display = 'block';
+        sidebarMore.classList.add('animate__fadeIn');
+        this.querySelector('span').textContent = 'Hide Contacts';
+        this.querySelector('ion-icon').name = 'chevron-up';
+      } else {
+        sidebarMore.classList.add('animate__fadeOut');
+        setTimeout(() => {
+          sidebarMore.style.display = 'none';
+          sidebarMore.classList.remove('animate__fadeOut');
+        }, 300);
+        this.querySelector('span').textContent = 'Show Contacts';
+        this.querySelector('ion-icon').name = 'chevron-down';
+      }
+      
+      // Remove animation class after it completes
+      setTimeout(() => {
+        sidebarMore.classList.remove('animate__fadeIn');
+      }, 300);
+    });
+
+    // Add hover effect to all interactive elements
+    document.querySelectorAll('.service-item, .navbar-link, .social-link, .contact-item, .timeline-item, .project-card, .testimonial-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        el.classList.add('animate__pulse');
+      });
+      
+      el.addEventListener('mouseleave', () => {
+        el.classList.remove('animate__pulse');
+      });
+    });
+
+    // Initialize the page with animations
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check URL hash and show corresponding section
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const targetLink = document.querySelector(`.navbar-link[data-nav-link][onclick*="${hash}"]`);
+        if (targetLink) {
+          targetLink.click();
+        }
+      }
+      
+      // Animate the avatar on load
+      const avatar = document.querySelector('.avatar-box img');
+      setTimeout(() => {
+        avatar.classList.add('animate__swing');
+        setTimeout(() => {
+          avatar.classList.remove('animate__swing');
+        }, 1000);
+      }, 500);
+      
+      // Scroll indicator
+      window.addEventListener('scroll', function() {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercentage = (scrollTop / scrollHeight) * 100;
+        document.querySelector('.scroll-indicator').style.width = scrollPercentage + '%';
+        
+        // Show/hide back to top button
+        if (scrollTop > 300) {
+          document.querySelector('.back-to-top').classList.add('active');
+        } else {
+          document.querySelector('.back-to-top').classList.remove('active');
+        }
+      });
+      
+      // Back to top button
+      document.querySelector('.back-to-top').addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Animate skill bars when they come into view
+      const animateSkills = function() {
+        const skillBars = document.querySelectorAll('.skill-progress-fill');
+        skillBars.forEach(bar => {
+          const rect = bar.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom >= 0) {
+            const width = bar.parentElement.previousElementSibling.querySelector('data').value;
+            bar.style.width = width + '%';
+          }
+        });
+      };
+      
+      // Initial check
+      animateSkills();
+      
+      // Check on scroll
+      window.addEventListener('scroll', animateSkills);
+      
+      // Add scroll reveal effect
+      window.addEventListener('scroll', revealOnScroll);
+      
+      function revealOnScroll() {
+        const elements = document.querySelectorAll('.animate__animated');
+        elements.forEach(el => {
+          const elementPosition = el.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          
+          if (elementPosition < windowHeight - 100) {
+            const animationClass = Array.from(el.classList).find(cls => cls.startsWith('animate__'));
+            if (animationClass && !el.classList.contains('animate__animated')) {
+              el.classList.add('animate__animated', animationClass);
+            }
+          }
+        });
+      }
+      
+      // Trigger initial reveal
+      revealOnScroll();
+    });
+  </script>
+</body>
+</html>
